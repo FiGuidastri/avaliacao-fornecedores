@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registros</title>
+</head>
+<body>
+    <h1>Registros</h1>
+    <table border="1">
+        <tr>
+            <th>Numero do Contrato Juridico</th>
+            <th>Numero do Contrato SAP</th>
+            <th>Razao Social</th>
+            <th>Vigencia Inicio</th>
+            <th>Vigencia Fim</th>
+            <th>Valor Global</th>
+            <th>Gestor</th>
+            <th>Grupo</th>
+        </tr>
+        {% for registro in registros %}
+        <tr>
+            <td>{{ registro['Numero do Contrato Juridico'] }}</td>
+            <td>{{ registro['Numero do Contrato SAP'] }}</td>
+            <td>{{ registro['Razao Social'] }}</td>
+            <td>{{ registro['VigenciaInicio'] }}</td>
+            <td>{{ registro['VigenciaFim'] }}</td>
+            <td>{{ registro['Valor Global'] }}</td>
+            <td>{{ registro['Gestor'] }}</td>
+            <td>{{ registro['Grupo'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

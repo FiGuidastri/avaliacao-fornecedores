@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Título</title>
+    <link rel="stylesheet" href="/caminho/para/o/seu/style.css">
+</head>
+<body>
+    <h1>Cadastro de Fornecedores</h1>
+    <form id="form" action="/criar_registro" method="post">
+        <label for="contrato_juridico">Numero do Contrato Juridico:</label><br>
+        <input type="text" id="contrato_juridico" name="contrato_juridico"><br>
+        <label for="contrato_sap">Numero do Contrato SAP:</label><br>
+        <input type="number" id="contrato_sap" name="contrato_sap"><br>
+        <label for="razao_social">Razão Social:</label><br>
+        <input type="text" id="razao_social" name="razao_social"><br>
+        <label for="vigencia_inicio">Vigencia Inicio:</label><br>
+        <input type="date" id="vigencia_inicio" name="vigencia_inicio"><br>
+        <label for="vigencia_fim">Vigencia Fim:</label><br>
+        <input type="date" id="vigencia_fim" name="vigencia_fim"><br>
+        <label for="valor_global">Valor Global:</label><br>
+        <input type="number" id="valor_global" name="valor_global"><br>
+        <label for="gestor">Gestor:</label><br>
+        <input type="text" id="gestor" name="gestor"><br>
+        <label for="grupo">Grupo:</label><br>
+        <input type="text" id="grupo" name="grupo"><br><br>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <div id="mensagem" class="mensagem">
+        <div class="mensagem-conteudo">
+            <span id="mensagem-texto"></span>
+            <button id="fechar-mensagem" style="display: none;">Ok!</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            fetch('/criar_registro', {
+                method: 'POST',
+                body: new FormData(this)
+            })
+            .then(response => response.json())
+            .then(data => {
+                mostrarMensagem(data.mensagem);
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+            });
+        });
+
+        document.getElementById("fechar-mensagem").addEventListener("click", function() {
+            document.getElementById("mensagem").style.display = "none";
+            document.getElementById("form").reset(); // Limpa o formulário
+        });
+
+        function mostrarMensagem(mensagem) {
+            document.getElementById("mensagem-texto").innerText = mensagem;
+            document.getElementById("mensagem").style.display = "block";
+            document.getElementById("fechar-mensagem").style.display = "block"; // Exibe o botão Ok!
+        }
+    </script>
+</body>
+</html>
