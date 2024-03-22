@@ -1,0 +1,22 @@
+input{
+    border-color: rgb(219, 219, 219);
+    border-radius: 5px;
+}
+.navbar{
+    color:rgb(1, 124, 196);
+    border-bottom: 1px solid rgb(212, 212, 212);
+}
+table{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+button{
+
+    margin-top: 1px;
+}
+div{
+    text-align:right;
+    margin-right: 19px;
+}
